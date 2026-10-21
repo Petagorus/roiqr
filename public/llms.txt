@@ -1,0 +1,21 @@
+# RoiQR
+
+> RoiQR (pronounced "roy") is a free Thai/English web app for generating QR codes. It creates single codes from URLs, text, email, phone, SMS, Wi-Fi, vCard, map locations and calendar events — or batch-generates hundreds of unique codes from an Excel or CSV file in one click. All QR images are rendered inside the user's browser; no file or content is ever uploaded to or stored on the server. Free, no sign-up, static codes that never expire.
+
+Site: https://example.com (self-hostable via Docker / Coolify)
+
+## Key facts
+
+- Languages: Thai and English interface, switchable instantly
+- QR types (9): URL, text, email, phone, SMS, Wi-Fi, vCard contact, map location (geo), calendar event
+- Batch mode: upload .xlsx / .xls / .csv, pick columns, one code per row; filenames can come from a chosen column
+- Design: 6 color palettes, custom hex colors, 4 module shapes (square / rounded / dots / diamond), center logo, "SCAN ME"-style caption under the code
+- Export: PNG (512–5120 px), SVG, clipboard copy; batch downloads as one ZIP or a printable A4 sticker-sheet PDF
+- Privacy: everything is generated client-side in the browser; nothing is stored
+- Cost: free, no account, no tracking of QR content; codes are static and never expire
+
+## Pages
+
+- [RoiQR home / generator](https://example.com): the entire app — single and batch QR generation with live preview
+- [llms-full.txt](https://example.com/llms-full.txt): this site's full content in one markdown document
+- [sitemap](https://example.com/sitemap.xml)

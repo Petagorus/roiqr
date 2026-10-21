@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Off-white / warm gray / charcoal + a single restrained accent. */
+    --background: 30 14% 97%; /* #f6f3ee warm off-white */
+    --foreground: 20 24% 18%; /* #2c2622 charcoal */
+
+    --card: 30 18% 100%;
+    --card-foreground: 20 24% 18%;
+
+    --popover: 30 18% 100%;
+    --popover-foreground: 20 24% 18%;
+
+    /* Single accent: a deep, confident ink/obsidian. */
+    --primary: 22 30% 20%;
+    --primary-foreground: 30 14% 97%;
+
+    --secondary: 30 10% 91%;
+    --secondary-foreground: 20 24% 18%;
+
+    --muted: 28 12% 92%;
+    /* 40% lightness ≈ 5.4:1 on the warm background — AA for body text. */
+    --muted-foreground: 22 10% 40%;
+
+    --accent: 28 12% 90%;
+    --accent-foreground: 20 24% 18%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 28 14% 88%;
+    --input: 28 14% 88%;
+    --ring: 20 24% 18%;
+
+    --radius: 0.75rem;
+
+    --font-kanit: "Kanit", system-ui, sans-serif;
+  }
+
+  :root.dark {
+    --background: 20 20% 9%;
+    --foreground: 30 14% 94%;
+
+    --card: 20 18% 12%;
+    --card-foreground: 30 14% 94%;
+
+    --popover: 20 18% 12%;
+    --popover-foreground: 30 14% 94%;
+
+    --primary: 30 14% 94%;
+    --primary-foreground: 20 24% 12%;
+
+    --secondary: 24 14% 20%;
+    --secondary-foreground: 30 14% 94%;
+
+    --muted: 22 14% 20%;
+    --muted-foreground: 22 12% 64%;
+
+    --accent: 22 14% 22%;
+    --accent-foreground: 30 14% 94%;
+
+    --destructive: 0 63% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 24 12% 22%;
+    --input: 24 12% 22%;
+    --ring: 30 14% 94%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.18);
+  }
+
+  /* Respect reduced-motion users at the foundation. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

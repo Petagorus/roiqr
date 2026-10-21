@@ -1,0 +1,41 @@
+// Prisma schema for QR CodeGen.
+//
+// Two tables:
+//   - RateLimit : persisted usage counter for the endpoint rate limiter.
+//   - UsageLog  : an append-only audit log of each successful generation.
+//
+// The app also runs without a database (rate limiter falls back to memory),
+// but seeding a schema keeps usage durable and lets the limiter scale across
+// multiple containers behind Coolify.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model RateLimit {
+  key         String    @id
+  count       Int       @default(0)
+  windowStart DateTime
+  lastSeen    DateTime
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([windowStart])
+}
+
+model UsageLog {
+  id        BigInt    @id @default(autoincrement())
+  key       String    // client key (IP or session)
+  type      String    // QR type generated
+  bytes     Int       // payload size in bytes
+  createdAt DateTime  @default(now())
+
+  @@index([createdAt])
+  @@index([key])
+}

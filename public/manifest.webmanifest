@@ -1,0 +1,23 @@
+{
+  "name": "RoiQR — ร้อย QR code ในคลิกเดียว",
+  "short_name": "RoiQR",
+  "description": "Generate a single QR code from any link, text, contact or Wi-Fi detail — or mass-produce hundreds from an Excel or CSV file. Runs entirely in your browser.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f3ee",
+  "theme_color": "#f6f3ee",
+  "icons": [
+    {
+      "src": "/brand/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/brand/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

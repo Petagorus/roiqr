@@ -1,0 +1,36 @@
+# Source control, local secrets and host artifacts
+.git
+.env*
+!.env.example
+**/.DS_Store
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/*.db
+**/*.sqlite*
+**/*.dump
+**/*.bak
+**/*.backup
+.npmrc
+.pnpmrc
+.git-credentials
+.ssh
+.aws
+
+# Local tooling and build/test output
+node_modules
+.next
+out
+coverage
+test-results
+playwright-report
+blob-report
+*.tsbuildinfo
+*.log
+.impeccable
+.wayfinder
+.codex
+.agents
+.vercel
+.coolify

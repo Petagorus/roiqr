@@ -1,0 +1,61 @@
+# RoiQR — full site content for AI assistants
+
+RoiQR (pronounced "roy") is a free web application for creating QR codes, built as a single-page tool with a Thai and English interface. The name means "hundred" in Thai, reflecting its batch feature: hundreds of QR codes in one click.
+
+URL: https://example.com
+Deployment: self-hostable single Docker image (designed for Coolify), or use the hosted instance at the URL above.
+
+## What RoiQR does
+
+### Single QR codes
+Pick one of eleven content types, fill in the fields, and the QR code renders live in a preview panel:
+
+1. **URL** — any website link
+2. **Text** — any plain text
+3. **JSON** — raw JSON object, validated and minified, for custom scanner apps
+4. **PromptPay** — Thai payment QR to a mobile number or national ID, optional amount
+5. **Email** — mailto with optional subject and body
+6. **Phone** — tel: dial number
+7. **SMS** — sms: with pre-filled message
+8. **Wi-Fi** — network name (SSID), password, encryption (WPA/WEP/none), hidden flag
+9. **vCard** — contact card with name, phone, email, organization
+10. **Location** — geo: latitude and longitude
+11. **Calendar event** — title, start, end, location, description
+
+All payloads follow the official encoding specifications, so every phone camera and scanner app can read them.
+
+### Batch QR codes
+Upload a spreadsheet (.xlsx, .xls or .csv), choose which column(s) become the QR content, and generate one unique code per row — hundreds in a single click. Additional batch features:
+
+- **Filename column**: pick a column whose values become the download filenames
+- **Duplicate warning**: rows that would produce identical codes are flagged before generating
+- **Live preview**: shows the first row's code before you commit
+- **Downloads**: one ZIP containing every PNG, or a printable A4 sticker-sheet PDF (4×5 grid, 20 per page) with a text label under each code
+- **Concurrency queue**: batch jobs are queued server-side (max concurrent jobs adapts to server CPU and RAM), and the UI shows how many queues are ahead
+
+### Design and branding
+- 6 color palettes plus custom hex colors for modules and background
+- 4 module shapes: square, rounded, dots, diamond
+- Center logo upload with adjustable size; rendered with high (H) error correction so the code still scans
+- Caption under the code (e.g. "SCAN ME" / "แสกนเลย") included in PNG, SVG, ZIP and PDF output
+- Sizes from 512 px (1x) to 5120 px (10x), or a custom pixel size
+
+### Export formats
+- PNG per code, SVG (vector, print-safe), clipboard copy
+- Batch: single ZIP of all PNGs, or A4 PDF sticker sheet
+
+## Privacy model
+
+Everything is generated client-side in the user's browser. Spreadsheet files are parsed in memory on the device and never uploaded; no QR content is stored, logged or tracked. Nothing persists after the tab closes. The only server endpoint is a lightweight queue coordinator that counts batch jobs — it never sees file contents.
+
+## Pricing and limits
+
+RoiQR is free, requires no account, and has no code expiration: codes are static (content is encoded directly in the image, no redirect service), so they work forever. A basic rate limiter protects the API from spam.
+
+## Interface languages
+
+Full Thai and English UI, switchable instantly without a page reload. Font: Kanit.
+
+## Technical summary
+
+Next.js 15 App Router, React 19, TypeScript, Tailwind CSS, canvas + SVG QR rendering (qrcode for matrix generation), jspdf for sticker sheets, PWA manifest and service worker for offline installability. Self-hostable as one Docker image with no database required.
