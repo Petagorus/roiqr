@@ -71,6 +71,10 @@ The browser UI generates QR images on the user's device. The queue endpoint coor
 
 See [SECURITY.md](SECURITY.md) for the initial dependency audit and reporting instructions. The initial public snapshot preserves the existing dependency versions; passing application tests is not a security certification.
 
+## Maintainer
+
+Maintained by [Petagorus](https://github.com/Petagorus).
+
 ## License
 
 [MIT](LICENSE) for original application code. See [third-party notices](THIRD_PARTY_NOTICES.md) for dependencies and the bundled font.
